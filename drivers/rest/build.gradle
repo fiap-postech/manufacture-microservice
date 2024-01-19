@@ -10,8 +10,6 @@ dependencies {
     compileOnly sharedLibs.springdoc.openapi.starter.webmvc.ui
 
     compileOnly project(":adapter")
-//    compileOnly project(":drivers:purchase-consumer")
-    compileOnly project(":drivers:dynamodb")
 
     api 'io.rest-assured:rest-assured:5.4.0'
     api 'io.rest-assured:json-schema-validator:5.4.0'

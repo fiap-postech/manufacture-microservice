@@ -1,14 +1,12 @@
 package br.com.fiap.tech.challenge.rest.resource;
 
 import br.com.fiap.tech.challenge.adapter.controller.purchase.FindPurchaseByUUIDController;
-import br.com.fiap.tech.challenge.adapter.repository.PurchaseReaderRepository;
 import br.com.fiap.tech.challenge.rest.mapping.PurchaseResponseMapper;
 import br.com.fiap.tech.challenge.rest.resource.doc.PurchaseResourceDoc;
 import br.com.fiap.tech.challenge.rest.resource.response.PurchseResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,19 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class PurchaseResource implements PurchaseResourceDoc {
 
     private final PurchaseResponseMapper purchaseResponseMapper;
-
     private final FindPurchaseByUUIDController findPurchaseByUUIDController;
-
-    private final PurchaseReaderRepository purchaseReaderRepository;
-
 
     @GetMapping("/{uuid}")
     public PurchseResponse getByUUID(@PathVariable("uuid") String uuid) {
         return purchaseResponseMapper.toResponse(findPurchaseByUUIDController.get(uuid));
-    }
-
-    @PostMapping
-    public void save() {
-        purchaseReaderRepository.readById("1");
     }
 }
