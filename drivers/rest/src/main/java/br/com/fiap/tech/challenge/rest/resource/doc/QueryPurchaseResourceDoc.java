@@ -1,5 +1,6 @@
 package br.com.fiap.tech.challenge.rest.resource.doc;
 
+import br.com.fiap.tech.challenge.enterprise.enums.PurchaseStatus;
 import br.com.fiap.tech.challenge.rest.resource.response.PurchseResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -7,9 +8,12 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.PathVariable;
 
-@Tag(name = "Pedido", description = "API responsável pelo gerenciamento de Pedido")
-public interface PurchaseResourceDoc {
+import java.util.List;
+
+@Tag(name = "Produção", description = "API responsável pelo gerenciamento da produção dos Pedidos")
+public interface QueryPurchaseResourceDoc {
 
     @Operation(
             summary = "Retorna um pedido pelo UUID",
@@ -20,4 +24,14 @@ public interface PurchaseResourceDoc {
             }
     )
     PurchseResponse getByUUID(@Parameter(description = "UUID do pedido a ser pesquisado", required = true) String uuid);
+
+    @Operation(
+            summary = "Retorna os pedidos pelo status",
+            description = "Busca os pedidos registrados no banco de dados pelo status",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "OK - Retorno em caso de sucesso na solicitação de busca de pedidos por status", content = { @Content(schema = @Schema(implementation = PurchseResponse.class), mediaType = "application/json") }),
+                    @ApiResponse(responseCode = "400", description = "O status do pedido fornecido não é válido", content = { @Content(schema = @Schema()) })
+            }
+    )
+    List<PurchseResponse> getByStatus(@PathVariable("status") PurchaseStatus status);
 }

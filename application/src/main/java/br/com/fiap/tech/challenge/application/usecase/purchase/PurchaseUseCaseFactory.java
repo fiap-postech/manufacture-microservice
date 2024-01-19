@@ -15,4 +15,8 @@ public class PurchaseUseCaseFactory {
     public static FindPurchaseByUUIDUseCase findPurchaseByUUIDUseCase(PurchaseReaderGateway gateway) {
         return new FindPurchaseByUUIDUseCaseImpl(gateway);
     }
+
+    public static FindPurchaseByStatusUseCase findPurchaseByStatusUseCase(PurchaseReaderGateway gateway) {
+        return new FindPurchaseByStatusUseCaseImpl(gateway);
+    }
 }

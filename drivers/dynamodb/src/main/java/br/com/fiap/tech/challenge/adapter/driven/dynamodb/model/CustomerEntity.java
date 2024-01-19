@@ -1,7 +1,9 @@
 package br.com.fiap.tech.challenge.adapter.driven.dynamodb.model;
 
+import lombok.Data;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 
+@Data
 @DynamoDbBean
 public class CustomerEntity {
 
@@ -23,35 +25,5 @@ public class CustomerEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public static final class Builder {
-        private String id;
-
-        private String name;
-
-        private Builder() {
-        }
-
-        public static Builder create() {
-            return new Builder();
-        }
-
-        public Builder withId(String id) {
-            this.id = id;
-            return this;
-        }
-
-        public Builder withName(String name) {
-            this.name = name;
-            return this;
-        }
-
-        public CustomerEntity build() {
-            CustomerEntity customerEntity = new CustomerEntity();
-            customerEntity.setId(id);
-            customerEntity.setName(name);
-            return customerEntity;
-        }
     }
 }

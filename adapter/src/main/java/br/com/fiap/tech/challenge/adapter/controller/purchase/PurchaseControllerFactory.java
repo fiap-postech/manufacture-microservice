@@ -2,6 +2,7 @@ package br.com.fiap.tech.challenge.adapter.controller.purchase;
 
 import br.com.fiap.tech.challenge.adapter.presenter.PurchasePresenter;
 import br.com.fiap.tech.challenge.application.usecase.purchase.CreatePurchaseUseCase;
+import br.com.fiap.tech.challenge.application.usecase.purchase.FindPurchaseByStatusUseCase;
 import br.com.fiap.tech.challenge.application.usecase.purchase.FindPurchaseByUUIDUseCase;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -15,5 +16,9 @@ public class PurchaseControllerFactory {
 
     public static FindPurchaseByUUIDController findPurchaseByUUIDController(FindPurchaseByUUIDUseCase useCase, PurchasePresenter presenter) {
         return new FindPurchaseByUUIDControllerImpl(useCase, presenter);
+    }
+
+    public static FindPurchaseByStatusController findPurchaseByStatusController(FindPurchaseByStatusUseCase useCase, PurchasePresenter presenter) {
+        return new FindPurchaseByStatusControllerImpl(useCase, presenter);
     }
 }
