@@ -22,7 +22,7 @@ public class CreatePurchaseUseCaseImpl implements CreatePurchaseUseCase {
     public Purchase create(CreatePurchaseDTO dto) {
         Validations.validate(dto);
         var purchase = this.getPurchase(dto);
-        return purchaseWriterGateway.write(purchase);
+        return purchaseWriterGateway.save(purchase);
     }
 
     private Purchase getPurchase(CreatePurchaseDTO dto) {

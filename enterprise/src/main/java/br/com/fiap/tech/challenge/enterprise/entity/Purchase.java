@@ -57,21 +57,9 @@ public class Purchase extends Entity {
         validate();
     }
 
-    public Purchase making() {
+    public Purchase updateStatus(PurchaseStatus status) {
         return toBuilder()
-                .status(PurchaseStatus.MAKING)
-                .build();
-    }
-
-    public Purchase made() {
-        return toBuilder()
-                .status(PurchaseStatus.MADE)
-                .build();
-    }
-
-    public Purchase delivered() {
-        return toBuilder()
-                .status(PurchaseStatus.DELIVERED)
+                .status(status)
                 .build();
     }
 }

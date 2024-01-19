@@ -33,5 +33,5 @@ public interface QueryPurchaseResourceDoc {
                     @ApiResponse(responseCode = "400", description = "O status do pedido fornecido não é válido", content = { @Content(schema = @Schema()) })
             }
     )
-    List<PurchseResponse> getByStatus(@PathVariable("status") PurchaseStatus status);
+    List<PurchseResponse> getByStatus(@Parameter(description = "Status dos pedidos a serem pesquisados", required = true) PurchaseStatus status);
 }

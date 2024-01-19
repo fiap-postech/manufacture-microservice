@@ -31,7 +31,7 @@ public class SwaggerConfiguration implements WebMvcConfigurer {
         License mitLicense = new License().name("MIT License").url("https://choosealicense.com/licenses/mit/");
 
         Info info = new Info()
-                .title("Tech Challenge API")
+                .title("Tech Challenge - Manufacture API")
                 .version("1.0.0")
                 .description("Esta API expõe endpoints referentes ao Tech Challenge de criação de um sistema de gerenciamento de pedidos de fast food.")
                 .license(mitLicense);

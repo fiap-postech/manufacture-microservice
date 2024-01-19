@@ -32,6 +32,7 @@ dependencies {
 
     implementation project(":adapter")
     implementation project(":drivers:rest")
+    implementation project(":drivers:purchase-client")
     implementation project(":drivers:purchase-consumer")
     implementation project(":drivers:dynamodb")
 }
@@ -62,7 +63,7 @@ bootJar {
 springBoot {
     buildInfo {
         properties {
-            name = 'Tech Challenge - Cart API'
+            name = 'Tech Challenge - Manufacture API'
             additional = [
                     "description": project?.description ?= "",
                     "version"    : scmVersion.version

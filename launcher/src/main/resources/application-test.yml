@@ -3,6 +3,7 @@ server:
 
 product.host: http://localhost:8688
 customer.host: http://localhost:8689
+purchase.host: http://localhost:8692
 
 aws:
   region: us-east-1

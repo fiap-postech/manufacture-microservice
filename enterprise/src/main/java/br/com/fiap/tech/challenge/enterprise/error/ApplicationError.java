@@ -4,12 +4,14 @@ import br.com.fiap.tech.challenge.exception.error.BaseApplicationError;
 import br.com.fiap.tech.challenge.exception.error.ErrorType;
 
 import static br.com.fiap.tech.challenge.exception.error.ErrorType.INTERNAL_SERVER_ERROR;
+import static br.com.fiap.tech.challenge.exception.error.ErrorType.INVALID_PARAMETER;
 import static java.lang.Boolean.TRUE;
 
 public enum ApplicationError implements BaseApplicationError {
 
     UNKNOWN_ERROR("AE-001", INTERNAL_SERVER_ERROR, TRUE, "Unexpected error [{}]"),
-    ;
+    PURCHASE_CLIENT_NOT_FOUND_BY_UUID("AE-002", INVALID_PARAMETER, TRUE, "Purchase not found [uuid={}]"),
+    INVALID_PURCHASE_STATUS("AE-003", INVALID_PARAMETER, TRUE, "Invalid purchase status [status={}]");
 
     private final String code;
 

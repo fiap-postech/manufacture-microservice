@@ -12,9 +12,9 @@ class PurchaseWriterGatewayImpl implements PurchaseWriterGateway {
     private final PurchaseWriterRepository repository;
 
     @Override
-    public Purchase write(Purchase purchase) {
+    public Purchase save(Purchase purchase) {
         var mapper = PurchaseMapper.INSTANCE;
 
-        return mapper.toDomain(repository.write(mapper.toDTO(purchase)));
+        return mapper.toDomain(repository.save(mapper.toDTO(purchase)));
     }
 }

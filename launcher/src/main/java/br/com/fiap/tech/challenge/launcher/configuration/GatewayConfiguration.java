@@ -1,8 +1,10 @@
 package br.com.fiap.tech.challenge.launcher.configuration;
 
 import br.com.fiap.tech.challenge.adapter.gateway.purchase.PurchaseGatewayFactory;
+import br.com.fiap.tech.challenge.adapter.repository.PurchaseClientWriterRepository;
 import br.com.fiap.tech.challenge.adapter.repository.PurchaseReaderRepository;
 import br.com.fiap.tech.challenge.adapter.repository.PurchaseWriterRepository;
+import br.com.fiap.tech.challenge.application.gateway.PurchaseClientWriterGateway;
 import br.com.fiap.tech.challenge.application.gateway.PurchaseReaderGateway;
 import br.com.fiap.tech.challenge.application.gateway.PurchaseWriterGateway;
 import org.springframework.context.annotation.Bean;
@@ -19,5 +21,10 @@ public class GatewayConfiguration {
     @Bean
     public PurchaseWriterGateway purchaseWriterGateway(PurchaseWriterRepository repository) {
         return PurchaseGatewayFactory.purchaseWriterGateway(repository);
+    }
+
+    @Bean
+    public PurchaseClientWriterGateway purchaseClientWriterGateway(PurchaseClientWriterRepository purchaseClientWriterRepository) {
+        return PurchaseGatewayFactory.purchaseClientWriterGateway(purchaseClientWriterRepository);
     }
 }

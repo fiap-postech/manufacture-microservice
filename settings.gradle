@@ -37,3 +37,6 @@ findProject(':drivers:purchase-consumer')?.name = 'purchase-consumer'
 
 include 'drivers:dynamodb'
 findProject(':drivers:dynamodb')?.name = 'dynamodb'
+
+include 'drivers:purchase-client'
+findProject(':drivers:purchase-client')?.name = 'purchase-client'
