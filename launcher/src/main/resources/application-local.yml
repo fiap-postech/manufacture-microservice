@@ -6,10 +6,6 @@ customer.host: http://localhost:8689
 purchase.host: http://localhost:8692
 
 aws:
-  region: us-east-1
-  sns:
-    close-cart:
-      name: local-cart-closed-topic
   sqs:
     manufacture-purchase-created-queue:
       name: local-manufacture-purchase-created-queue

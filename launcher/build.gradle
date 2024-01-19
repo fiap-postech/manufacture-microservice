@@ -57,7 +57,7 @@ java {
 }
 
 bootJar {
-    archiveFileName = "cart-service.jar"
+    archiveFileName = "manufacture-service.jar"
 }
 
 springBoot {

@@ -11,11 +11,9 @@ WORKDIR /build
 
 COPY adapter/build.gradle ./adapter/build.gradle
 COPY application/build.gradle ./application/build.gradle
-COPY drivers/cart-producer/build.gradle ./drivers/cart-producer/build.gradle
-COPY drivers/customer-client/build.gradle ./drivers/customer-client/build.gradle
-COPY drivers/product-client/build.gradle ./drivers/product-client/build.gradle
-COPY drivers/redis/build.gradle ./drivers/redis/build.gradle
-COPY drivers/rest/build.gradle ./drivers/rest/build.gradle
+COPY drivers/dynamodb/build.gradle ./drivers/dynamodb/build.gradle
+COPY drivers/purchase-client/build.gradle ./drivers/purchase-client/build.gradle
+COPY drivers/purchase-consumer/build.gradle ./drivers/purchase-consumer/build.gradle
 COPY enterprise/build.gradle ./enterprise/build.gradle
 COPY launcher/build.gradle ./launcher/build.gradle
 COPY build.gradle .
@@ -32,8 +30,8 @@ FROM --platform=linux/amd64 openjdk:17-alpine
 
 WORKDIR /service
 
-COPY --from=builder /build/launcher/libs/cart-service.jar ./cart-service.jar
+COPY --from=builder /build/launcher/libs/manufacture-service.jar ./manufacture-service.jar
 
-RUN /bin/sh -c 'touch /service/cart-service.jar'
+RUN /bin/sh -c 'touch /service/manufacture-service.jar'
 
-CMD ["java", "-jar", "cart-service.jar"]
+CMD ["java", "-jar", "manufacture-service.jar"]
