@@ -1,4 +1,4 @@
-package br.com.fiap.tech.challenge.adapter.gateway.purchase;
+package br.com.fiap.tech.challenge.adapter.gateway.purchase.client;
 
 import br.com.fiap.tech.challenge.adapter.mapping.PurchaseMapper;
 import br.com.fiap.tech.challenge.adapter.repository.PurchaseClientWriterRepository;

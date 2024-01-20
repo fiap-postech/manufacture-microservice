@@ -1,5 +1,6 @@
 package br.com.fiap.tech.challenge.adapter.gateway.purchase;
 
+import br.com.fiap.tech.challenge.adapter.gateway.purchase.client.PurchaseClientWriterGatewayImpl;
 import br.com.fiap.tech.challenge.adapter.repository.PurchaseClientWriterRepository;
 import br.com.fiap.tech.challenge.adapter.repository.PurchaseReaderRepository;
 import br.com.fiap.tech.challenge.adapter.repository.PurchaseWriterRepository;

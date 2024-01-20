@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import java.io.Serial;
@@ -11,6 +12,7 @@ import java.util.UUID;
 @Getter
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
+@ToString
 public class Customer extends Entity {
 
     @Serial

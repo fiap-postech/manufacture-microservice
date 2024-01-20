@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import java.io.Serial;
@@ -13,6 +14,7 @@ import java.io.Serial;
 @Getter
 @Accessors(fluent = true)
 @EqualsAndHashCode(callSuper = true)
+@ToString
 public class PurchaseItem extends ValueObject {
 
     @Serial
