@@ -13,7 +13,7 @@ import software.amazon.awssdk.services.sqs.SqsAsyncClient;
 public class PurchaseConsumerConfiguration {
 
     @Bean
-    public SqsTemplate sqsTemplateManualContainerInstantiation(SqsAsyncClient sqsAsyncClient) {
+    public SqsTemplate sqsTemplate(SqsAsyncClient sqsAsyncClient) {
         return SqsTemplate.builder().sqsAsyncClient(sqsAsyncClient).build();
     }
 }

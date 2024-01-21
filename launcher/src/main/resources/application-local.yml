@@ -1,8 +1,6 @@
 server:
   port: 8693
 
-product.host: http://localhost:8688
-customer.host: http://localhost:8689
 purchase.host: http://localhost:8692
 
 aws:
@@ -16,7 +14,3 @@ spring:
   cloud:
     aws:
       endpoint: http://localhost:4566
-      region:
-        static: us-east-1
-      dynamodb:
-        table-prefix: manufacture_

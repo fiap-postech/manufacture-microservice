@@ -1,6 +1,16 @@
 server:
   port: 8693
 
-product.host: http://localhost:8688
-customer.host: http://localhost:8689
 purchase.host: http://localhost:8692
+
+aws:
+  sqs:
+    manufacture-purchase-created-queue:
+      name: local-manufacture-purchase-created-queue
+  dynamodb:
+    time-to-live: 300
+
+spring:
+  cloud:
+    aws:
+      endpoint: http://localhost:4566

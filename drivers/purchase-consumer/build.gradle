@@ -6,6 +6,7 @@ version '1.0.0'
 
 dependencies {
     compileOnly sharedLibs.spring.context
+    compileOnly "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.3"
     api platform("io.awspring.cloud:spring-cloud-aws-dependencies:3.1.0")
     api 'io.awspring.cloud:spring-cloud-aws-starter-sqs'
 
