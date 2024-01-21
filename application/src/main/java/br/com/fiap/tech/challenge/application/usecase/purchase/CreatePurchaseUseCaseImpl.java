@@ -11,7 +11,6 @@ import br.com.fiap.tech.challenge.enterprise.valueobject.Quantity;
 import lombok.RequiredArgsConstructor;
 
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class CreatePurchaseUseCaseImpl implements CreatePurchaseUseCase {
@@ -44,7 +43,7 @@ public class CreatePurchaseUseCaseImpl implements CreatePurchaseUseCase {
                                         .description(item.getProduct().getDescription())
                                         .build())
                                 .build())
-                        .collect(Collectors.toList()))
+                        .toList())
                 .build();
     }
 }

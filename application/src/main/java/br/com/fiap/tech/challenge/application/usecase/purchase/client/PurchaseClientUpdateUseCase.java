@@ -5,7 +5,7 @@ import br.com.fiap.tech.challenge.enterprise.enums.PurchaseStatus;
 
 import java.util.UUID;
 
-public interface PurchaseClientUpdateUserCase {
+public interface PurchaseClientUpdateUseCase {
 
     Purchase update(UUID uuid, PurchaseStatus status);
 }

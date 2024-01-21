@@ -11,7 +11,7 @@ import java.util.UUID;
 import static br.com.fiap.tech.challenge.enterprise.error.ApplicationError.PURCHASE_CLIENT_NOT_FOUND_BY_UUID;
 
 @RequiredArgsConstructor
-public class PurchaseClientUpdateUserCaseImpl implements PurchaseClientUpdateUserCase {
+public class PurchaseClientUpdateUseCaseImpl implements PurchaseClientUpdateUseCase {
 
     private final PurchaseClientWriterGateway purchaseClientWriterGateway;
 

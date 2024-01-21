@@ -8,7 +8,7 @@ import br.com.fiap.tech.challenge.application.usecase.purchase.FindPurchaseBySta
 import br.com.fiap.tech.challenge.application.usecase.purchase.FindPurchaseByUUIDUseCase;
 import br.com.fiap.tech.challenge.application.usecase.purchase.PurchaseUseCaseFactory;
 import br.com.fiap.tech.challenge.application.usecase.purchase.UpdatePurchaseUseCase;
-import br.com.fiap.tech.challenge.application.usecase.purchase.client.PurchaseClientUpdateUserCase;
+import br.com.fiap.tech.challenge.application.usecase.purchase.client.PurchaseClientUpdateUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -31,14 +31,14 @@ public class UseCaseConfiguration {
     }
 
     @Bean
-    public PurchaseClientUpdateUserCase purchaseClientUpdateUserCase(PurchaseClientWriterGateway writer) {
-        return PurchaseUseCaseFactory.purchaseClientUpdateUserCase(writer);
+    public PurchaseClientUpdateUseCase purchaseClientUpdateUseCase(PurchaseClientWriterGateway writer) {
+        return PurchaseUseCaseFactory.purchaseClientUpdateUseCase(writer);
     }
 
     @Bean
     public UpdatePurchaseUseCase updatePurchaseUseCase(FindPurchaseByUUIDUseCase findPurchaseByUUIDUseCase,
-                                                       PurchaseClientUpdateUserCase purchaseClientUpdateUserCase,
+                                                       PurchaseClientUpdateUseCase purchaseClientUpdateUseCase,
                                                        PurchaseWriterGateway purchaseWriterGateway) {
-        return PurchaseUseCaseFactory.updatePurchaseUseCase(findPurchaseByUUIDUseCase, purchaseClientUpdateUserCase, purchaseWriterGateway);
+        return PurchaseUseCaseFactory.updatePurchaseUseCase(findPurchaseByUUIDUseCase, purchaseClientUpdateUseCase, purchaseWriterGateway);
     }
 }

@@ -34,7 +34,7 @@ class FindPurchaseByUUIDControllerTest {
 
     @BeforeEach
     void setUp(){
-        controller = PurchaseControllerFactory.findPurchaseByUUIDController(useCase,presenter);
+        controller = PurchaseControllerFactory.findPurchaseByUUIDController(useCase, presenter);
     }
 
     @Test

@@ -3,8 +3,8 @@ package br.com.fiap.tech.challenge.application.usecase.purchase;
 import br.com.fiap.tech.challenge.application.gateway.PurchaseClientWriterGateway;
 import br.com.fiap.tech.challenge.application.gateway.PurchaseReaderGateway;
 import br.com.fiap.tech.challenge.application.gateway.PurchaseWriterGateway;
-import br.com.fiap.tech.challenge.application.usecase.purchase.client.PurchaseClientUpdateUserCase;
-import br.com.fiap.tech.challenge.application.usecase.purchase.client.PurchaseClientUpdateUserCaseImpl;
+import br.com.fiap.tech.challenge.application.usecase.purchase.client.PurchaseClientUpdateUseCase;
+import br.com.fiap.tech.challenge.application.usecase.purchase.client.PurchaseClientUpdateUseCaseImpl;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -23,13 +23,13 @@ public class PurchaseUseCaseFactory {
         return new FindPurchaseByStatusUseCaseImpl(gateway);
     }
 
-    public static PurchaseClientUpdateUserCase purchaseClientUpdateUserCase(PurchaseClientWriterGateway writer) {
-        return new PurchaseClientUpdateUserCaseImpl(writer);
+    public static PurchaseClientUpdateUseCase purchaseClientUpdateUseCase(PurchaseClientWriterGateway writer) {
+        return new PurchaseClientUpdateUseCaseImpl(writer);
     }
 
     public static UpdatePurchaseUseCase updatePurchaseUseCase(FindPurchaseByUUIDUseCase findPurchaseByUUIDUseCase,
-                                                              PurchaseClientUpdateUserCase purchaseClientUpdateUserCase,
+                                                              PurchaseClientUpdateUseCase purchaseClientUpdateUseCase,
                                                               PurchaseWriterGateway purchaseWriterGateway) {
-        return new UpdatePurchaseUseCaseImpl(findPurchaseByUUIDUseCase, purchaseClientUpdateUserCase, purchaseWriterGateway);
+        return new UpdatePurchaseUseCaseImpl(findPurchaseByUUIDUseCase, purchaseClientUpdateUseCase, purchaseWriterGateway);
     }
 }
