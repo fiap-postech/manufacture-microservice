@@ -25,7 +25,7 @@ public class PurchaseUtil {
     private static final Logger LOGGER = getLogger(PurchaseUtil.class);
 
     public static void sendMessage(SqsTemplate sqsTemplate, Environment env, PurchaseDTO purchaseDTO) {
-        sqsTemplate.send(env.getProperty("aws.sqs.manufacture-purchase-created-queue.name"), JsonUtil.asJsonString(purchaseDTO));
+        sqsTemplate.send(env.getProperty("aws.sqs.manufacture-purchase-created-queue.name"), purchaseDTO);
     }
 
     public static PurchaseResponse getPurchaseByUuid(String uuid, int maxAttempts, long millisWaitingTime) {
