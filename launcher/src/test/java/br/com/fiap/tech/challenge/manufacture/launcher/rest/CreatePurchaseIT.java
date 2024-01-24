@@ -15,6 +15,8 @@ import org.testcontainers.containers.output.Slf4jLogConsumer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import java.time.Duration;
+
 import static br.com.fiap.tech.challenge.manufacture.launcher.containers.LocalStackContainers.localStackContainer;
 import static br.com.fiap.tech.challenge.manufacture.launcher.fixture.Fixture.create;
 import static br.com.fiap.tech.challenge.manufacture.launcher.fixture.PurchaseDTOFixture.waitingMakingPurchaseDTOModel;
@@ -22,6 +24,7 @@ import static br.com.fiap.tech.challenge.manufacture.launcher.fixture.PurchaseRe
 import static br.com.fiap.tech.challenge.manufacture.launcher.util.PurchaseUtil.getPurchaseByUuid;
 import static br.com.fiap.tech.challenge.manufacture.launcher.util.PurchaseUtil.sendMessage;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.awaitility.Awaitility.given;
 import static org.slf4j.LoggerFactory.getLogger;
 import static org.springframework.test.annotation.DirtiesContext.ClassMode.AFTER_CLASS;
 
@@ -57,11 +60,17 @@ class CreatePurchaseIT {
 
         sendMessage(sqsTemplate, env, purchaseDTO);
 
-        var response = getPurchaseByUuid(purchaseDTO.getId(), 10, 2000);
-
-        assertThat(response)
-                .isNotNull()
-                .usingRecursiveComparison()
-                .isEqualTo(purchaseResponse);
+        given()
+                .await()
+                .pollInterval(Duration.ofSeconds(2))
+                .atMost(Duration.ofSeconds(20))
+                .ignoreExceptions()
+                .untilAsserted(() -> {
+                    var response = getPurchaseByUuid(purchaseDTO.getId());
+                    assertThat(response)
+                            .isNotNull()
+                            .usingRecursiveComparison()
+                            .isEqualTo(purchaseResponse);
+                });
     }
 }

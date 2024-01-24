@@ -5,7 +5,6 @@ import br.com.fiap.tech.challenge.rest.resource.response.PurchaseResponse;
 import io.awspring.cloud.sqs.operations.SqsTemplate;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import org.opentest4j.AssertionFailedError;
 import org.slf4j.Logger;
 import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
@@ -28,23 +27,7 @@ public class PurchaseUtil {
         sqsTemplate.send(env.getProperty("aws.sqs.manufacture-purchase-created-queue.name"), purchaseDTO);
     }
 
-    public static PurchaseResponse getPurchaseByUuid(String uuid, int maxAttempts, long millisWaitingTime) {
-        try {
-            for (int i = 1; i <= maxAttempts; i++) {
-                LOGGER.info("Searching purchase by UUID: attempt: {}/{}", i, maxAttempts);
-                try {
-                    return getPurchaseByUuid(uuid);
-                } catch (AssertionFailedError e) {
-                    Thread.sleep(millisWaitingTime);
-                }
-            }
-            return getPurchaseByUuid(uuid);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static PurchaseResponse getPurchaseByUuid(String uuid) {
+    public static PurchaseResponse getPurchaseByUuid(String uuid) {
         try {
             var request = HttpRequest.newBuilder()
                     .uri(URI.create(String.format("http://localhost:8693/purchase/%s", uuid)))
