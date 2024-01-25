@@ -18,8 +18,8 @@ public class PurchaseClientServiceImpl implements PurchaseClientWriterRepository
     public void update(String id, PurchaseStatus status) {
         var response = purchaseClient.updateStatus(id, status);
 
-        if (response.getStatusCode().is2xxSuccessful()) {
-            throw new ApplicationException(ApplicationError.PURCHASE_CLIENT_UPDATE_ERROR);
+        if (!response.getStatusCode().is2xxSuccessful()) {
+            throw new ApplicationException(ApplicationError.PURCHASE_CLIENT_UPDATE_ERROR, response);
         }
     }
 }
