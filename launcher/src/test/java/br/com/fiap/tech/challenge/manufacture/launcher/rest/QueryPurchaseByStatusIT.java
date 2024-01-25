@@ -78,7 +78,7 @@ class QueryPurchaseByStatusIT {
                     RestAssured.given()
                             .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .when()
-                            .get("/purchase/status/{status}", purchaseDTO.getStatus())
+                            .get("/manufacture/status/{status}", purchaseDTO.getStatus())
                         .then()
                             .statusCode(HttpStatus.OK.value())
                             .body(matchesJsonSchemaInClasspath("./schemas/PurchaseListResponseSchema.json"))

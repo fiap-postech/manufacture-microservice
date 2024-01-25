@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/purchase")
+@RequestMapping("/manufacture")
 @RequiredArgsConstructor
 public class QueryPurchaseResource implements QueryPurchaseResourceDoc {
 

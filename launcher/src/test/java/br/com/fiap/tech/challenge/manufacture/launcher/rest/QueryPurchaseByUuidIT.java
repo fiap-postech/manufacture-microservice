@@ -77,7 +77,7 @@ class QueryPurchaseByUuidIT {
                     RestAssured.given()
                             .contentType(MediaType.APPLICATION_JSON_VALUE)
                         .when()
-                            .get("/purchase/{id}", purchaseDTO.getId())
+                            .get("/manufacture/{id}", purchaseDTO.getId())
                         .then()
                             .statusCode(HttpStatus.OK.value())
                             .body(matchesJsonSchemaInClasspath("./schemas/PurchaseResponseSchema.json"));

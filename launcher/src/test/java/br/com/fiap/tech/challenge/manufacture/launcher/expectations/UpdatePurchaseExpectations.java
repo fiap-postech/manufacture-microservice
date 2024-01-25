@@ -18,7 +18,7 @@ public class UpdatePurchaseExpectations {
 
     public static <O> HttpRequest updatePurchaseSuccessExpectation(MockServerClient client, String id, PurchaseStatus purchaseStatus, Model<O> output) {
         var request = request()
-                .withPath(String.format("/purchase/%s/%s", id, purchaseStatus))
+                .withPath(String.format("/manufacture/%s/%s", id, purchaseStatus))
                 .withMethod("PUT");
 
         var response = HttpResponse.response()

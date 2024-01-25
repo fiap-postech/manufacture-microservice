@@ -30,7 +30,7 @@ public class PurchaseUtil {
     public static PurchaseResponse getPurchaseByUuid(String uuid) {
         try {
             var request = HttpRequest.newBuilder()
-                    .uri(URI.create(String.format("http://localhost:8693/purchase/%s", uuid)))
+                    .uri(URI.create(String.format("http://localhost:8693/manufacture/%s", uuid)))
                     .headers("Content-Type", MediaType.APPLICATION_JSON_VALUE)
                     .GET()
                     .build();
