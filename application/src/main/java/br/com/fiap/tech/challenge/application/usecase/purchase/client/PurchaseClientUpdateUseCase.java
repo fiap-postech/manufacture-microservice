@@ -7,5 +7,5 @@ import java.util.UUID;
 
 public interface PurchaseClientUpdateUseCase {
 
-    Purchase update(UUID uuid, PurchaseStatus status);
+    void update(UUID uuid, PurchaseStatus status);
 }

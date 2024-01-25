@@ -12,7 +12,7 @@ import java.util.UUID;
 
 import static br.com.fiap.tech.challenge.application.fixture.Fixture.create;
 import static br.com.fiap.tech.challenge.application.fixture.PurchaseFixture.waitingMakePurchaseModel;
-import static br.com.fiap.tech.challenge.enterprise.error.ApplicationError.PURCHASE_CLIENT_NOT_FOUND_BY_UUID;
+import static br.com.fiap.tech.challenge.enterprise.error.ApplicationError.PURCHASE_NOT_FOUND_BY_UUID;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
@@ -50,7 +50,7 @@ class FindPurchaseByUUIDUseCaseTest {
     @Test
     void shouldThrowsExceptionWhenNotExists() {
         var uuid = UUID.fromString("6a568870-3784-4b7c-a55c-bd005873046a");
-        var exception = new ApplicationException(PURCHASE_CLIENT_NOT_FOUND_BY_UUID);
+        var exception = new ApplicationException(PURCHASE_NOT_FOUND_BY_UUID);
 
         when(gateway.readById(any(UUID.class))).thenThrow(exception);
 

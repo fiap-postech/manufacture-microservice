@@ -10,15 +10,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Optional;
-
 import static br.com.fiap.tech.challenge.adapter.fixture.Fixture.create;
-import static br.com.fiap.tech.challenge.adapter.fixture.PurchaseDTOFixture.makingPurchaseDTOModel;
 import static br.com.fiap.tech.challenge.adapter.fixture.PurchaseFixture.makingPurchaseModel;
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class PurchaseClientWriterGatewayTest {
@@ -35,19 +31,11 @@ class PurchaseClientWriterGatewayTest {
 
     @Test
     void shouldUpdatePurchase() {
-        var purchaseDTO = create(makingPurchaseDTOModel());
         var purchase = create(makingPurchaseModel());
 
-        when(repository.update(any(String.class), any(PurchaseStatus.class)))
-                .thenReturn(Optional.of(purchaseDTO));
+        doNothing().when(repository).update(any(String.class), any(PurchaseStatus.class));
 
-        var response = gateway.update(purchase.uuid(), PurchaseStatus.MAKING);
-
-        assertThat(response)
-                .isPresent()
-                .get()
-                .usingRecursiveComparison()
-                .isEqualTo(purchase);
+        gateway.update(purchase.uuid(), PurchaseStatus.MAKING);
 
         verify(repository).update(any(String.class), any(PurchaseStatus.class));
     }

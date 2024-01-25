@@ -17,10 +17,11 @@ import java.util.UUID;
 import static br.com.fiap.tech.challenge.application.fixture.Fixture.create;
 import static br.com.fiap.tech.challenge.application.fixture.PurchaseFixture.makingPurchaseModel;
 import static br.com.fiap.tech.challenge.application.fixture.PurchaseFixture.waitingMakePurchaseModel;
-import static br.com.fiap.tech.challenge.enterprise.error.ApplicationError.PURCHASE_CLIENT_NOT_FOUND_BY_UUID;
+import static br.com.fiap.tech.challenge.enterprise.error.ApplicationError.PURCHASE_NOT_FOUND_BY_UUID;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -49,7 +50,7 @@ class UpdatePurchaseUseCaseTest {
         var makingPurchase = create(makingPurchaseModel());
 
         when(findPurchaseByUUIDUseCase.get(any(UUID.class))).thenReturn(waitingMakePurchase);
-        when(purchaseClientUpdateUseCase.update(any(UUID.class), any(PurchaseStatus.class))).thenReturn(makingPurchase);
+        doNothing().when(purchaseClientUpdateUseCase).update(any(UUID.class), any(PurchaseStatus.class));
         when(purchaseWriterGateway.save(any(Purchase.class)))
                 .thenAnswer(i -> Arrays.stream(i.getArguments()).findFirst().orElseThrow());
 
@@ -68,7 +69,7 @@ class UpdatePurchaseUseCaseTest {
     @Test
     void shouldThrowsWhenNotExists() {
         var uuid = UUID.fromString("6a568870-3784-4b7c-a55c-bd005873046a");
-        var exception = new ApplicationException(PURCHASE_CLIENT_NOT_FOUND_BY_UUID);
+        var exception = new ApplicationException(PURCHASE_NOT_FOUND_BY_UUID);
 
         when(findPurchaseByUUIDUseCase.get(any(UUID.class))).thenThrow(exception);
 
