@@ -12,7 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Arrays;
 
 import static br.com.fiap.tech.challenge.adapter.fixture.Fixture.create;
-import static br.com.fiap.tech.challenge.adapter.fixture.PurchaseFixture.waitingMakingPurchaseModel;
+import static br.com.fiap.tech.challenge.adapter.fixture.PurchaseFixture.waitingMakePurchaseModel;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -33,7 +33,7 @@ class PurchaseWriterGatewayTest {
 
     @Test
     void shouldSavePurchase() {
-        var purchase = create(waitingMakingPurchaseModel());
+        var purchase = create(waitingMakePurchaseModel());
 
         when(repository.save(any(PurchaseDTO.class)))
                 .thenAnswer(i -> Arrays.stream(i.getArguments()).findFirst().orElseThrow());

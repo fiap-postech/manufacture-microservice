@@ -19,8 +19,8 @@ import java.time.Duration;
 
 import static br.com.fiap.tech.challenge.manufacture.launcher.containers.LocalStackContainers.localStackContainer;
 import static br.com.fiap.tech.challenge.manufacture.launcher.fixture.Fixture.create;
-import static br.com.fiap.tech.challenge.manufacture.launcher.fixture.PurchaseDTOFixture.waitingMakingPurchaseDTOModel;
-import static br.com.fiap.tech.challenge.manufacture.launcher.fixture.PurchaseResponseFixture.waitingMakingPurchaseResponseModel;
+import static br.com.fiap.tech.challenge.manufacture.launcher.fixture.PurchaseDTOFixture.waitingMakePurchaseDTOModel;
+import static br.com.fiap.tech.challenge.manufacture.launcher.fixture.PurchaseResponseFixture.waitingMakePurchaseResponseModel;
 import static br.com.fiap.tech.challenge.manufacture.launcher.util.PurchaseUtil.getPurchaseByUuid;
 import static br.com.fiap.tech.challenge.manufacture.launcher.util.PurchaseUtil.sendMessage;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -55,8 +55,8 @@ class CreatePurchaseIT {
 
     @Test
     void testCreatePurchase() {
-        var purchaseDTO = create(waitingMakingPurchaseDTOModel());
-        var purchaseResponse = create(waitingMakingPurchaseResponseModel());
+        var purchaseDTO = create(waitingMakePurchaseDTOModel());
+        var purchaseResponse = create(waitingMakePurchaseResponseModel());
 
         sendMessage(sqsTemplate, env, purchaseDTO);
 

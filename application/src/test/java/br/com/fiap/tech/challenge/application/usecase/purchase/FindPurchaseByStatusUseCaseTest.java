@@ -11,7 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 
 import static br.com.fiap.tech.challenge.application.fixture.Fixture.create;
-import static br.com.fiap.tech.challenge.application.fixture.PurchaseFixture.waitingMakingPurchaseModel;
+import static br.com.fiap.tech.challenge.application.fixture.PurchaseFixture.waitingMakePurchaseModel;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -32,8 +32,8 @@ class FindPurchaseByStatusUseCaseTest {
 
     @Test
     void shouldReturnPurchasesWhenExists() {
-        var status = PurchaseStatus.WAITING_MAKING;
-        var purchase = create(waitingMakingPurchaseModel());
+        var status = PurchaseStatus.WAITING_MAKE;
+        var purchase = create(waitingMakePurchaseModel());
         var purchases = List.of(purchase);
 
         when(gateway.readByStatus(status)).thenReturn(purchases);
@@ -52,7 +52,7 @@ class FindPurchaseByStatusUseCaseTest {
     void shouldReturnEmptyWhenNotExists() {
         when(gateway.readByStatus(any(PurchaseStatus.class))).thenReturn(List.of());
 
-        var response = useCase.get(PurchaseStatus.WAITING_MAKING);
+        var response = useCase.get(PurchaseStatus.WAITING_MAKE);
 
         assertThat(response)
                 .isNotNull()

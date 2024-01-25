@@ -7,7 +7,7 @@ public enum PurchaseStatus {
     DELIVERED(null),
     MADE(DELIVERED),
     MAKING(MADE),
-    WAITING_MAKING(MAKING);
+    WAITING_MAKE(MAKING);
 
     private final PurchaseStatus next;
 

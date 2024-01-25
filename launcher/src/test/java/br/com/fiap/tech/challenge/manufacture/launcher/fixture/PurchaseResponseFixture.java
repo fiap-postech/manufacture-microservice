@@ -18,10 +18,10 @@ import static org.instancio.Select.field;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class PurchaseResponseFixture {
 
-    public static Model<PurchaseResponse> waitingMakingPurchaseResponseModel() {
+    public static Model<PurchaseResponse> waitingMakePurchaseResponseModel() {
         return Instancio.of(PurchaseResponse.class)
                 .set(field(PurchaseResponse::getId), "bdd276d4-177f-4dfd-a8f6-36f59d1d2747")
-                .set(field(PurchaseResponse::getStatus), PurchaseStatus.WAITING_MAKING)
+                .set(field(PurchaseResponse::getStatus), PurchaseStatus.WAITING_MAKE)
                 .set(field(PurchaseResponse::getDate), LocalDate.parse("2024-01-20"))
                 .set(field(PurchaseResponse::getCode), "A123")
                 .set(field(PurchaseResponse::getCustomer), create(customerResponseModel()))
@@ -30,7 +30,7 @@ public class PurchaseResponseFixture {
     }
 
     public static Model<PurchaseResponse> makingPurchaseResponseModel() {
-        return Instancio.of(waitingMakingPurchaseResponseModel())
+        return Instancio.of(waitingMakePurchaseResponseModel())
                 .set(field(PurchaseResponse::getStatus), PurchaseStatus.MAKING)
                 .toModel();
     }

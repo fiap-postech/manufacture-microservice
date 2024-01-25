@@ -25,7 +25,7 @@ import java.time.Duration;
 
 import static br.com.fiap.tech.challenge.manufacture.launcher.containers.LocalStackContainers.localStackContainer;
 import static br.com.fiap.tech.challenge.manufacture.launcher.fixture.Fixture.create;
-import static br.com.fiap.tech.challenge.manufacture.launcher.fixture.PurchaseDTOFixture.waitingMakingPurchaseDTOModel;
+import static br.com.fiap.tech.challenge.manufacture.launcher.fixture.PurchaseDTOFixture.waitingMakePurchaseDTOModel;
 import static br.com.fiap.tech.challenge.manufacture.launcher.util.ConfigurationOverrides.overrideConfiguration;
 import static br.com.fiap.tech.challenge.manufacture.launcher.util.PurchaseUtil.sendMessage;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
@@ -65,7 +65,7 @@ class QueryPurchaseByStatusIT {
 
     @Test
     void testFindPurchaseByUuid() {
-        var purchaseDTO = create(waitingMakingPurchaseDTOModel());
+        var purchaseDTO = create(waitingMakePurchaseDTOModel());
 
         sendMessage(sqsTemplate, env, purchaseDTO);
 

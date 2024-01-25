@@ -19,10 +19,10 @@ import static org.instancio.Select.field;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class PurchaseFixture {
 
-    public static Model<Purchase> waitingMakingPurchaseModel() {
+    public static Model<Purchase> waitingMakePurchaseModel() {
         return Instancio.of(Purchase.class)
                 .set(field(Purchase::uuid), UUID.fromString("bdd276d4-177f-4dfd-a8f6-36f59d1d2747"))
-                .set(field(Purchase::status), PurchaseStatus.WAITING_MAKING)
+                .set(field(Purchase::status), PurchaseStatus.WAITING_MAKE)
                 .set(field(Purchase::date), LocalDate.parse("2024-01-20"))
                 .set(field(Purchase::code), "A123")
                 .set(field(Purchase::customer), create(customerModel()))
@@ -31,7 +31,7 @@ public class PurchaseFixture {
     }
 
     public static Model<Purchase> makingPurchaseModel() {
-        return Instancio.of(waitingMakingPurchaseModel())
+        return Instancio.of(waitingMakePurchaseModel())
                 .set(field(Purchase::status), PurchaseStatus.MAKING)
                 .toModel();
     }

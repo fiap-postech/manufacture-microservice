@@ -13,8 +13,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 
 import static br.com.fiap.tech.challenge.adapter.fixture.Fixture.create;
-import static br.com.fiap.tech.challenge.adapter.fixture.PurchaseDTOFixture.waitingMakingPurchaseDTOModel;
-import static br.com.fiap.tech.challenge.adapter.fixture.PurchaseFixture.waitingMakingPurchaseModel;
+import static br.com.fiap.tech.challenge.adapter.fixture.PurchaseDTOFixture.waitingMakePurchaseDTOModel;
+import static br.com.fiap.tech.challenge.adapter.fixture.PurchaseFixture.waitingMakePurchaseModel;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -34,8 +34,8 @@ class PurchaseReaderGatewayTest {
 
     @Test
     void shouldReturnPurchaseByUuid() {
-        var purchase = create(waitingMakingPurchaseModel());
-        var purchaseDTO = create(waitingMakingPurchaseDTOModel());
+        var purchase = create(waitingMakePurchaseModel());
+        var purchaseDTO = create(waitingMakePurchaseDTOModel());
 
         when(repository.readById(purchase.uuid().toString())).thenReturn(purchaseDTO);
 
@@ -51,9 +51,9 @@ class PurchaseReaderGatewayTest {
 
     @Test
     void shouldReturnPurchasesByStatus() {
-        var status = PurchaseStatus.WAITING_MAKING;
-        var purchase = create(waitingMakingPurchaseModel());
-        var purchaseDTOs = List.of(create(waitingMakingPurchaseDTOModel()));
+        var status = PurchaseStatus.WAITING_MAKE;
+        var purchase = create(waitingMakePurchaseModel());
+        var purchaseDTOs = List.of(create(waitingMakePurchaseDTOModel()));
 
         when(repository.readByStatus(status)).thenReturn(purchaseDTOs);
 

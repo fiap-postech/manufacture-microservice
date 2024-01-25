@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 import static br.com.fiap.tech.challenge.application.fixture.CreatePurchaseDTOFixture.createPurchaseDTOModel;
 import static br.com.fiap.tech.challenge.application.fixture.Fixture.create;
-import static br.com.fiap.tech.challenge.application.fixture.PurchaseFixture.waitingMakingPurchaseModel;
+import static br.com.fiap.tech.challenge.application.fixture.PurchaseFixture.waitingMakePurchaseModel;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -33,7 +33,7 @@ class CreatePurchaseUseCaseTest {
 
     @Test
     void shouldCreatePurchase() {
-        var purchase = create(waitingMakingPurchaseModel());
+        var purchase = create(waitingMakePurchaseModel());
         var createPurchaseDTO = create(createPurchaseDTOModel());
 
         when(purchaseWriterGateway.save(any(Purchase.class)))

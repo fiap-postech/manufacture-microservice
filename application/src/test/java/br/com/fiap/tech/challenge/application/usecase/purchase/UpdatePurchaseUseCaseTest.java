@@ -16,7 +16,7 @@ import java.util.UUID;
 
 import static br.com.fiap.tech.challenge.application.fixture.Fixture.create;
 import static br.com.fiap.tech.challenge.application.fixture.PurchaseFixture.makingPurchaseModel;
-import static br.com.fiap.tech.challenge.application.fixture.PurchaseFixture.waitingMakingPurchaseModel;
+import static br.com.fiap.tech.challenge.application.fixture.PurchaseFixture.waitingMakePurchaseModel;
 import static br.com.fiap.tech.challenge.enterprise.error.ApplicationError.PURCHASE_CLIENT_NOT_FOUND_BY_UUID;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -45,15 +45,15 @@ class UpdatePurchaseUseCaseTest {
 
     @Test
     void shouldChangePurchaseStatus() {
-        var waitingMakingPurchase = create(waitingMakingPurchaseModel());
+        var waitingMakePurchase = create(waitingMakePurchaseModel());
         var makingPurchase = create(makingPurchaseModel());
 
-        when(findPurchaseByUUIDUseCase.get(any(UUID.class))).thenReturn(waitingMakingPurchase);
+        when(findPurchaseByUUIDUseCase.get(any(UUID.class))).thenReturn(waitingMakePurchase);
         when(purchaseClientUpdateUseCase.update(any(UUID.class), any(PurchaseStatus.class))).thenReturn(makingPurchase);
         when(purchaseWriterGateway.save(any(Purchase.class)))
                 .thenAnswer(i -> Arrays.stream(i.getArguments()).findFirst().orElseThrow());
 
-        var response = useCase.update(waitingMakingPurchase.uuid(), PurchaseStatus.MAKING);
+        var response = useCase.update(waitingMakePurchase.uuid(), PurchaseStatus.MAKING);
 
         assertThat(response)
                 .isNotNull()

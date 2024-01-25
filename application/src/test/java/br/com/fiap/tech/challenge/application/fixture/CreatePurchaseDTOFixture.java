@@ -21,7 +21,7 @@ public class CreatePurchaseDTOFixture {
     public static Model<CreatePurchaseDTO> createPurchaseDTOModel() {
         return Instancio.of(CreatePurchaseDTO.class)
                 .set(field(CreatePurchaseDTO::getId), "bdd276d4-177f-4dfd-a8f6-36f59d1d2747")
-                .set(field(CreatePurchaseDTO::getStatus), PurchaseStatus.WAITING_MAKING)
+                .set(field(CreatePurchaseDTO::getStatus), PurchaseStatus.WAITING_MAKE)
                 .set(field(CreatePurchaseDTO::getDate), LocalDate.parse("2024-01-20"))
                 .set(field(CreatePurchaseDTO::getCode), "A123")
                 .set(field(CreatePurchaseDTO::getCustomer), create(createPurchaseCustomerDTOModel()))

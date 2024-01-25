@@ -11,7 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.UUID;
 
 import static br.com.fiap.tech.challenge.application.fixture.Fixture.create;
-import static br.com.fiap.tech.challenge.application.fixture.PurchaseFixture.waitingMakingPurchaseModel;
+import static br.com.fiap.tech.challenge.application.fixture.PurchaseFixture.waitingMakePurchaseModel;
 import static br.com.fiap.tech.challenge.enterprise.error.ApplicationError.PURCHASE_CLIENT_NOT_FOUND_BY_UUID;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -34,7 +34,7 @@ class FindPurchaseByUUIDUseCaseTest {
 
     @Test
     void shouldReturnPurchaseWhenExists() {
-        var purchase = create(waitingMakingPurchaseModel());
+        var purchase = create(waitingMakePurchaseModel());
 
         when(gateway.readById(any(UUID.class))).thenReturn(purchase);
 

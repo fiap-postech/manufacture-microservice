@@ -12,8 +12,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 
 import static br.com.fiap.tech.challenge.adapter.fixture.Fixture.create;
-import static br.com.fiap.tech.challenge.adapter.fixture.PurchaseDTOFixture.waitingMakingPurchaseDTOModel;
-import static br.com.fiap.tech.challenge.adapter.fixture.PurchaseFixture.waitingMakingPurchaseModel;
+import static br.com.fiap.tech.challenge.adapter.fixture.PurchaseDTOFixture.waitingMakePurchaseDTOModel;
+import static br.com.fiap.tech.challenge.adapter.fixture.PurchaseFixture.waitingMakePurchaseModel;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -37,14 +37,14 @@ class FindPurchaseByStatusControllerTest {
 
     @Test
     void shouldReturnPurchasesWhenExists() {
-        var purchases = List.of(create(waitingMakingPurchaseModel()));
-        var purchaseDTO = create(waitingMakingPurchaseDTOModel());
+        var purchases = List.of(create(waitingMakePurchaseModel()));
+        var purchaseDTO = create(waitingMakePurchaseDTOModel());
         var purchaseDTOs = List.of(purchaseDTO);
 
         when(useCase.get(any(PurchaseStatus.class))).thenReturn(purchases);
         when(presenter.present(purchases)).thenReturn(purchaseDTOs);
 
-        var response = controller.get(PurchaseStatus.WAITING_MAKING);
+        var response = controller.get(PurchaseStatus.WAITING_MAKE);
 
         assertThat(response)
                 .isNotNull()
@@ -59,7 +59,7 @@ class FindPurchaseByStatusControllerTest {
     void shouldReturnEmptyWhenNotExists() {
         when(useCase.get(any(PurchaseStatus.class))).thenReturn(List.of());
 
-        var response = controller.get(PurchaseStatus.WAITING_MAKING);
+        var response = controller.get(PurchaseStatus.WAITING_MAKE);
 
         assertThat(response)
                 .isNotNull()

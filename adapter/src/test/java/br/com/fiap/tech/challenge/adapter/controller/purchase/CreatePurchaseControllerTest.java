@@ -10,8 +10,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static br.com.fiap.tech.challenge.adapter.fixture.CreatePurchaseDTOFixture.createPurchaseDTOModel;
 import static br.com.fiap.tech.challenge.adapter.fixture.Fixture.create;
-import static br.com.fiap.tech.challenge.adapter.fixture.PurchaseDTOFixture.waitingMakingPurchaseDTOModel;
-import static br.com.fiap.tech.challenge.adapter.fixture.PurchaseFixture.waitingMakingPurchaseModel;
+import static br.com.fiap.tech.challenge.adapter.fixture.PurchaseDTOFixture.waitingMakePurchaseDTOModel;
+import static br.com.fiap.tech.challenge.adapter.fixture.PurchaseFixture.waitingMakePurchaseModel;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -35,8 +35,8 @@ class CreatePurchaseControllerTest {
     @Test
     void shouldCreatePurchase() {
         var createPurchaseDTO = create(createPurchaseDTOModel());
-        var purchase = create(waitingMakingPurchaseModel());
-        var purchaseDTO = create(waitingMakingPurchaseDTOModel());
+        var purchase = create(waitingMakePurchaseModel());
+        var purchaseDTO = create(waitingMakePurchaseDTOModel());
 
         when(useCase.create(createPurchaseDTO)).thenReturn(purchase);
         when(presenter.present(purchase)).thenReturn(purchaseDTO);

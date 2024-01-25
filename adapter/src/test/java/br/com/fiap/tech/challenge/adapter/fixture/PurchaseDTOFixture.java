@@ -18,10 +18,10 @@ import static org.instancio.Select.field;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class PurchaseDTOFixture {
 
-    public static Model<PurchaseDTO> waitingMakingPurchaseDTOModel() {
+    public static Model<PurchaseDTO> waitingMakePurchaseDTOModel() {
         return Instancio.of(PurchaseDTO.class)
                 .set(field(PurchaseDTO::getId), "bdd276d4-177f-4dfd-a8f6-36f59d1d2747")
-                .set(field(PurchaseDTO::getStatus), PurchaseStatus.WAITING_MAKING)
+                .set(field(PurchaseDTO::getStatus), PurchaseStatus.WAITING_MAKE)
                 .set(field(PurchaseDTO::getDate), LocalDate.parse("2024-01-20"))
                 .set(field(PurchaseDTO::getCode), "A123")
                 .set(field(PurchaseDTO::getCustomer), create(customerDTOModel()))
@@ -30,7 +30,7 @@ public class PurchaseDTOFixture {
     }
 
     public static Model<PurchaseDTO> makingPurchaseDTOModel() {
-        return Instancio.of(waitingMakingPurchaseDTOModel())
+        return Instancio.of(waitingMakePurchaseDTOModel())
                 .set(field(PurchaseDTO::getStatus), PurchaseStatus.MAKING)
                 .toModel();
     }
