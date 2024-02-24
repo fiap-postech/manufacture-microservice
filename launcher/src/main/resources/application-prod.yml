@@ -2,7 +2,7 @@ purchase.host: http://localhost:8692
 
 aws:
   sqs:
-    manufacture-purchase-created-queue:
-      name: prd-manufacture-purchase-created-queue
+    manufacture-purchase-paid-queue:
+      name: prd-manufacture-purchase-paid-queue
   dynamodb:
     time-to-live: 3600
