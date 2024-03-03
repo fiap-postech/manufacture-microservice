@@ -24,7 +24,7 @@ public class PurchaseUtil {
     private static final Logger LOGGER = getLogger(PurchaseUtil.class);
 
     public static void sendMessage(SqsTemplate sqsTemplate, Environment env, PurchaseDTO purchaseDTO) {
-        sqsTemplate.send(env.getProperty("aws.sqs.manufacture-purchase-created-queue.name"), purchaseDTO);
+        sqsTemplate.send(env.getProperty("aws.sqs.manufacture-purchase-paid-queue.name"), purchaseDTO);
     }
 
     public static PurchaseResponse getPurchaseByUuid(String uuid) {

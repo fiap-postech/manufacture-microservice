@@ -14,7 +14,7 @@ public class PurchaseListener {
     private final CreatePurchaseController createPurchaseController;
     private final CreatePurchaseMapper createPurchaseMapper;
 
-    @SqsListener(queueNames = "${aws.sqs.manufacture-purchase-created-queue.name}")
+    @SqsListener(queueNames = "${aws.sqs.manufacture-purchase-paid-queue.name}")
     void listen(PurchaseDTO purchaseDTO) {
         createPurchaseController.create(createPurchaseMapper.toDTO(purchaseDTO));
     }
